@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "stddef.h"
 
 /* Given a char array, a string, returns the length of that string (as
@@ -14,13 +15,13 @@ size_t Str_getLength(const char pcSrc[])
    return uLength;
 }
 
-char Str_copy(char pcDest[], const char pcSrc[]) {
+int Str_copy(char pcDest[], const char pcSrc[]) {
+    size_t nextCharacter = 0;
     assert(pcDest != NULL);
     assert(pcSrc != NULL);
-    size_t nextCharacter = 0;
     while (pcSrc[nextCharacter] != '\0') {
         pcDest[nextCharacter] = pcSrc[nextCharacter];
         nextCharacter++;    
         }  
-    return pcDest;
+    return 0;
 }
