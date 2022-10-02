@@ -1,5 +1,6 @@
 #ifndef STRA_INCLUDED
 #define STRA_INCLUDED
+#include <stddef.h>
 /*--------------------------------------------------------------------*/
 
 /* Return the length of String pcSrc */ 
