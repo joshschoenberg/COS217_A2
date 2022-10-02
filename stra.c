@@ -56,15 +56,17 @@ int Str_compare(const char pc1[], const char pc2[]) {
 }
 
 char *Str_search(const char haystack[], const char needle[]) {
-    size_t haystackIndex = 0;
-    size_t needleIndex = 0;
+    size_t haystackIndex;
+    size_t needleIndex;
+    haystackIndex = 0;
+    needleIndex = 0;
     if (needle[needleIndex] == '\0')
-        return haystack;
+        return (char *) haystack;
     while (haystack[haystackIndex] != '\0') {
          /* If needle appears in haystack, return pointer to first 
         character of first occurrence of needle in haystack */
         if (needle[needleIndex] == '\0') {
-            return &haystack[haystackIndex - Str_getLength(needle)];
+            return (char *) haystack[haystackIndex - Str_getLength(needle)];
         }
         else if (haystack[haystackIndex] == needle[needleIndex]) {
                 needleIndex++;
