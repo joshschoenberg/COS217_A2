@@ -59,7 +59,7 @@ char *Str_search(const char haystack[], const char needle[]) {
     size_t haystackIndex = 0;
     size_t needleIndex = 0;
     if (needle[needleIndex] == '\0')
-        return (char) haystack;
+        return haystack;
     while (haystack[haystackIndex] != '\0') {
          /* If needle appears in haystack, return pointer to first 
         character of first occurrence of needle in haystack */
