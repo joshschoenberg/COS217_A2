@@ -28,18 +28,18 @@ char *Str_copy(char *pcDest, const char *pcSrc) {
 return pcDestStart;
 }
 
-/*
+
 char *Str_concat(char *pcDest, const char *pcSrc) {
+    return pcDest;
 }
 
 int Str_compare(const char *pc1, const char *pc2) {
-
+    return 0;
 }
 
 
 
 
 char *Str_search(const char *haystack, const char *needle) {
-
+    return haystack;
 }
-*/
