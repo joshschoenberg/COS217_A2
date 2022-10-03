@@ -41,6 +41,6 @@ int Str_compare(const char *pc1, const char *pc2) {
 
 
 char *Str_search(const char *haystack, const char *needle) {
-    char *ptr;
+    char *ptr = haystack;
     return ptr;
 }
