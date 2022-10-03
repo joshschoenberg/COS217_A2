@@ -16,9 +16,9 @@ size_t Str_getLength(const char *pcSrc)
 }
 
 char *Str_copy(char *pcDest, const char *pcSrc) { 
+    char *pcDestStart = pcDest;
     assert(pcDest != NULL);
     assert(pcSrc != NULL);
-    char *pcDestStart = pcDest;
     while (*pcSrc != '0')  {
         *pcDest = *pcSrc;
         pcDest++;
@@ -28,6 +28,7 @@ char *Str_copy(char *pcDest, const char *pcSrc) {
 return pcDestStart;
 }
 
+/*
 char *Str_concat(char *pcDest, const char *pcSrc) {
 }
 
@@ -41,3 +42,4 @@ int Str_compare(const char *pc1, const char *pc2) {
 char *Str_search(const char *haystack, const char *needle) {
 
 }
+*/
