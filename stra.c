@@ -29,8 +29,6 @@ char *Str_copy(char pcDest[], const char pcSrc[]) {
 }
 
 char *Str_concat(char pcDest[], const char pcSrc[]) {
-    /* size_t pcDest_length = Str_getLength(pcDest);
-    size_t pcSrc_length = Str_getLength(pcSrc); */
     int i = 0;
     int j = 0;
     assert(pcDest != NULL);
@@ -74,8 +72,10 @@ char *Str_search(const char haystack[], const char needle[]) {
     size_t haystackIndex;
     size_t needleIndex;
     assert(haystack != NULL);
+    assert(needle != NULL);
     haystackIndex = 0;
     needleIndex = 0;
+    /* Return the haystack if the needle is empty */ 
     if (needle[needleIndex] == '\0')
         return (char *) haystack;
     while (haystack[haystackIndex] != '\0') {
@@ -84,9 +84,17 @@ char *Str_search(const char haystack[], const char needle[]) {
         if (needle[needleIndex] == '\0') {
             return (char *) (haystack + haystackIndex - Str_getLength(needle));
         }
+        /* If the next character matches, increment the needle and 
+        haystack indices */
         else if (haystack[haystackIndex] == needle[needleIndex]) {
                 needleIndex++;
                 haystackIndex++;
+        }
+        /* If haystack character is the first letter of needle, go to 
+        the second character of each */
+        else if (haystack[haystackIndex] == needle) {
+            haystackIndex++;
+            needleIndex += 1; /* Needle index becomes the second one */
         }
         else {
             needleIndex = 0;
