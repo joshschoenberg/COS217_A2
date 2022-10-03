@@ -57,6 +57,7 @@ int Str_compare(const char pc1[], const char pc2[]) {
             return 1;
         else if (pc1[i] < pc2[i])
             return -1;
+        i++;
     }
     return 0;
 }
