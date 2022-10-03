@@ -35,15 +35,16 @@ char *Str_concat(char pcDest[], const char pcSrc[]) {
     int j = 0;
     assert(pcDest != NULL);
     assert(pcSrc != NULL);
-    while (pcSrc[i] != '\0') {
+
+    while (pcDest[i] != '\0') {
         i++;
     }
-    while (pcDest[j] != '\0') {
+    while (pcSrc[j] != '\0') {
         pcDest[i] = pcSrc[j];
         j++;
         i++;
     }
-    pcDest[j] = '\0';
+    pcDest[i] = '\0';
     return pcDest;
 }
 

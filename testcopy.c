@@ -5,7 +5,7 @@
 #include <assert.h>
 
 
-int main() {
+int main(void) {
     int i;
     char *pcResult;
     const char acSrc[] = {'\0', 's'};

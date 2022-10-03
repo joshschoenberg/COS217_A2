@@ -146,22 +146,12 @@ static void testCopy(void)
    fflush(stdout);
 
    {
-      int i = 0;
       const char acSrc[] = {'\0', 's'};
       char acDest1[] = {'d', 'd'};
       char acDest2[] = {'d', 'd'};
       pcResult = Str_copy(acDest1, acSrc);
       ASSURE(pcResult == acDest1);
       (void)strcpy(acDest2, acSrc);
-      while (acDest1[i] != '\0') {
-         printf("%c", acDest1[i]);
-         i++;
-      }
-      i = 0;
-      while (acDest1[i] != '\0') {
-         printf("%c", acDest2[i]);
-         i++;
-      }
       ASSURE(memcmp(acDest1, acDest2, sizeof(acDest1)) == 0);
    }
 
