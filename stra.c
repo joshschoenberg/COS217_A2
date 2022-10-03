@@ -24,6 +24,7 @@ char *Str_copy(char pcDest[], const char pcSrc[]) {
         pcDest[nextCharacter] = pcSrc[nextCharacter];
         nextCharacter++;    
         }  
+    pcDest[nextCharacter] = '\0';
     return pcDest;
 }
 
@@ -42,7 +43,7 @@ char *Str_concat(char pcDest[], const char pcSrc[]) {
         j++;
         i++;
     }
-    pcDest[j+1] = '\0';
+    pcDest[j] = '\0';
     return pcDest;
 }
 
