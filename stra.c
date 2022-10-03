@@ -60,7 +60,7 @@ int Str_compare(const char pc1[], const char pc2[]) {
         else 
             i++;
     }
-    return 1;
+    return 122;
 }
 
 char *Str_search(const char haystack[], const char needle[]) {
