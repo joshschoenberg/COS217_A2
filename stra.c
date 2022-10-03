@@ -52,14 +52,21 @@ int Str_compare(const char pc1[], const char pc2[]) {
     int i = 0;
     assert(pc1 != NULL);
     assert(pc2 != NULL);
-    while (pc1[i] != '\0') {
+    while (pc1[i] != '\0' && pc2[i] != '\0') {
         if (pc1[i] > pc2[i])
             return 1;
         else if (pc1[i] < pc2[i])
             return -1;
         else 
             i++;
-    }
+    } 
+    /* Return 1 i pc1[] is longer than pc2[] */
+    if (pc1[i] != '0')
+        return 1;
+    /* Return -1 if pc1[] is shorter than pc2[] */
+    if (pc2[i] != '\0')
+        return -1;
+    /* If they are equivalent in length, then return 0 */
     return 0;
 }
 
