@@ -101,5 +101,9 @@ char *Str_search(const char haystack[], const char needle[]) {
             haystackIndex++;
         }
     }
+    if (haystack[haystackIndex] == '\0' && needle[needleIndex] == '\0')
+        return (char *) (haystack + (haystackIndex - Str_getLength(needle))); 
+
+    
     return NULL;
 }
