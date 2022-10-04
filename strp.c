@@ -36,7 +36,7 @@ char *Str_concat(char *pcDest, const char *pcSrc) {
         pcDest++;
         pcSrc++;
     }
-    pcDest = '\0';
+    *pcDest = '\0';
     return pcDestStart;
 }
 
