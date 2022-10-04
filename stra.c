@@ -93,7 +93,7 @@ char *Str_search(const char haystack[], const char needle[]) {
         the second character of each */
         else if (haystack[haystackIndex] == *needle) {
             haystackIndex++;
-            needleIndex += 1; /* Needle index becomes the second one */
+            needleIndex = 1; /* Needle index becomes the second one */
         }
         else {
             needleIndex = 0;
