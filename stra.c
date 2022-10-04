@@ -77,11 +77,12 @@ char *Str_search(const char haystack[], const char needle[]) {
     /* Return the haystack if the needle is empty */ 
     if (needle[needleIndex] == '\0')
         return (char *) haystack;
+
     while (haystack[haystackIndex] != '\0') {
          /* If needle appears in haystack, return pointer to first 
         character of first occurrence of needle in haystack */
         if (needle[needleIndex] == '\0') {
-            return (char *) (haystack + haystackIndex - Str_getLength(needle));
+            return (char *) (haystack + (haystackIndex - Str_getLength(needle)));
         }
         /* If the next character matches, increment the needle and 
         haystack indices */
