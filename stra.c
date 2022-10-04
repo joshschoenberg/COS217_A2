@@ -2,7 +2,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <assert.h>
-#include <stddef.h>
 #include "str.h"
 
 /* Given a char array, a string, returns the length of that string (as

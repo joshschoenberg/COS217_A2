@@ -5,12 +5,12 @@
 #include "str.h"
 
 size_t Str_getLength(const char *pcSrc) {
-   const char *pcEnd;
-   assert(pcSrc != NULL);
-   pcEnd = pcSrc;
-   while (*pcEnd != '\0')
-      pcEnd++;
-   return (size_t)(pcEnd - pcSrc);
+    const char *pcEnd;
+    assert(pcSrc != NULL);
+    pcEnd = pcSrc;
+    while (*pcEnd != '\0')
+        pcEnd++;
+    return (size_t)(pcEnd - pcSrc);
 }
 
 char *Str_copy(char *pcDest, const char *pcSrc) { 
@@ -23,12 +23,14 @@ char *Str_copy(char *pcDest, const char *pcSrc) {
         pcSrc++;
     }
     *pcDest = '\0';
-return pcDestStart;
+    return pcDestStart;
 }
 
 
 char *Str_concat(char *pcDest, const char *pcSrc) {
     char *pcDestStart = pcDest;
+    assert(pcDest != NULL);
+    assert(pcSrc != NULL);
     while (*pcDest != '\0')
         pcDest++;
     while (*pcSrc != '\0') {
@@ -41,6 +43,26 @@ char *Str_concat(char *pcDest, const char *pcSrc) {
 }
 
 int Str_compare(const char *pc1, const char *pc2) {
+    assert(pc1 != NULL);
+    assert(pc2 != NULL);
+    while (*pc1 != '\0' && *pc2 != '\0') {
+        if (*pc1 > *pc2) 
+            return 1;
+        else if (*pc1 < *pc2) {
+            return -1;
+        }
+        else {
+            pc1++;
+            pc2++;
+        }
+    } 
+    /* Return 1 i pc1[] is longer than pc2[] */
+    if (*pc1 != '\0')
+        return 1;
+    /* Return -1 if pc1[] is shorter than pc2[] */
+    if (*pc2 != '\0')
+        return -1;
+    /* If they are equivalent in length, then return 0 */
     return 0;
 }
 
