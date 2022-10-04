@@ -30,9 +30,9 @@ return pcDestStart;
 
 char *Str_concat(char *pcDest, const char *pcSrc) {
     char *pcDestStart = pcDest;
-    while (pcDest != '\0')
+    while (*pcDest != '\0')
         pcDest++;
-    while (pcSrc != '\0') {
+    while (*pcSrc != '\0') {
         *pcDest = *pcSrc;
         pcDest++;
         pcSrc++;
