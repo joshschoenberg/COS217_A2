@@ -2,7 +2,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <assert.h>
-#include <stddef.h>
 #include "str.h"
 
 size_t Str_getLength(const char *pcSrc) {
@@ -18,7 +17,7 @@ char *Str_copy(char *pcDest, const char *pcSrc) {
     char *pcDestStart = pcDest;
     assert(pcDest != NULL);
     assert(pcSrc != NULL);
-    while (*pcSrc != '0')  {
+    while (*pcSrc != '\0')  {
         *pcDest = *pcSrc;
         pcDest++;
         pcSrc++;
