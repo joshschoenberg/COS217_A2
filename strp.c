@@ -5,8 +5,7 @@
 #include <stddef.h>
 #include "str.h"
 
-size_t Str_getLength(const char *pcSrc)
-{
+size_t Str_getLength(const char *pcSrc) {
    const char *pcEnd;
    assert(pcSrc != NULL);
    pcEnd = pcSrc;
@@ -30,7 +29,16 @@ return pcDestStart;
 
 
 char *Str_concat(char *pcDest, const char *pcSrc) {
-    return pcDest;
+    char *pcDestStart = pcDest;
+    while (pcDest != '\0')
+        pcDest++;
+    while (pcSrc != '\0') {
+        *pcDest = *pcSrc;
+        pcDest++;
+        pcSrc++;
+    }
+    pcDest = '\0';
+    return pcDestStart;
 }
 
 int Str_compare(const char *pc1, const char *pc2) {
