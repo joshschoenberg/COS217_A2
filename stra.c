@@ -106,6 +106,7 @@ char *Str_search(const char haystack[], const char needle[]) {
                     }
                 else {
                     needleIndex = 0;
+                    break;
                 }
             }
             /* Update haystack index */
