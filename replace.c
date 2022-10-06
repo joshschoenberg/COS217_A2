@@ -26,7 +26,7 @@ static size_t replaceAndWrite(const char *pcLine,
    char *startReplace;
    char *previousStartReplace;
    size_t sizeOfFrom;
-   size_t sizeOfTo;
+   /* size_t sizeOfTo; */
    size_t numberOfReplacements = 0;
    
    assert(pcLine != NULL);
