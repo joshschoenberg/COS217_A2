@@ -98,7 +98,7 @@ char *Str_search(const char haystack[], const char needle[]) {
         else if (haystack[haystackIndex] != needle[needleIndex]) {                       
             tempNeedleIndex = needleIndex-1;
             tempHaystackIndex = haystackIndex;
-            while (tempNeedleIndex >= 0) {
+            while (tempNeedleIndex > 0 || tempNeedleIndex == 0) {
                 /* Go through needle checking against each corresponding
                 value in haystack. If there is a match, store that value
                 as the new needle index and continue checking from 
