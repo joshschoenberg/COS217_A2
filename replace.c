@@ -56,6 +56,7 @@ static size_t replaceAndWrite(const char *pcLine,
         /* Print everything before the replace */
         while (pcLine != startReplace) {
           printf("%c", *pcLine);
+          printf("STOP");
           pcLine++;
         } 
         /* Print pcTo */
