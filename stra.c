@@ -95,28 +95,36 @@ char *Str_search(const char haystack[], const char needle[]) {
         /* If next haystack character matches this character, go back 
         through haystack and needle to see where they stop matching
         the second character of needle */
-        else if (haystack[haystackIndex+1] == needle[needleIndex]) {                       
+        else if (haystack[haystackIndex] == needle[needleIndex-1]) {                       
             tempNeedleIndex = needleIndex-1;
             tempHaystackIndex = haystackIndex;
             while (tempNeedleIndex != 0) {
+                /* Go through needle checking against each corresponding
+                value in haystack */
                 if (haystack[tempHaystackIndex] == 
                                               needle[tempNeedleIndex]) {
                     tempHaystackIndex--;
                     tempNeedleIndex--;
                     }
+                /* Check the haystack value against the first value of 
+                the needle */
                 else {
                     needleIndex = 0;
+                    if (needle[needleIndex] == haystack[haystackIndex]) 
+                        needleIndex++;
                     break;
-                }
             }
             /* Update haystack index */
             haystackIndex++;
+            }
         }
+        
         else {
             needleIndex = 0;
             haystackIndex++;
         }
     }
+    
     /* Return the appropriate pointer if needle comes at the very end of
     haystack */
     if (haystack[haystackIndex] == '\0' && needle[needleIndex] == '\0')
