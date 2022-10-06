@@ -26,7 +26,6 @@ static size_t replaceAndWrite(const char *pcLine,
    char *startReplace;
    char *previousStartReplace;
    size_t sizeOfFrom;
-   /* size_t sizeOfTo; */
    size_t numberOfReplacements = 0;
    
    assert(pcLine != NULL);
@@ -44,9 +43,8 @@ static size_t replaceAndWrite(const char *pcLine,
       return 0;
    }
    
-   /* Store the size of pcFrom and pcTo */
+   /* Store the size of pcFrom */
    sizeOfFrom = Str_getLength(pcFrom);
-   /* sizeOfTo = Str_getLength(pcTo); */
 
    while (*pcLine != '\0') {
         
@@ -72,6 +70,8 @@ static size_t replaceAndWrite(const char *pcLine,
         /* Increment numberOfReplacements */
         numberOfReplacements++;
    }
+        else 
+            break;
    }
     /* Print everything that's left */
     i = 0;
