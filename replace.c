@@ -67,7 +67,7 @@ static size_t replaceAndWrite(const char *pcLine,
         /* Move pcLine to the end of the replaced section */
         pcLine += sizeOfFrom;
         /* Increment numberOfReplacements */
-        printf("Number of replacements: %d", numberOfReplacements);
+        printf("Number of replacements: %ld", numberOfReplacements);
         numberOfReplacements++;
         }
    }
