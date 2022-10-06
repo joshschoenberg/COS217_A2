@@ -95,24 +95,30 @@ char *Str_search(const char haystack[], const char needle[]) {
         /* If next haystack character matches this character, go back 
         through haystack and needle to see where they stop matching
         the second character of needle */
-        else if (haystack[haystackIndex] == needle[needleIndex-1]) {                       
+        else if (haystack[haystackIndex] != needle[needleIndex]) {                       
             tempNeedleIndex = needleIndex-1;
             tempHaystackIndex = haystackIndex;
-            while (tempNeedleIndex != 0) {
+            while (tempNeedleIndex >= 0) {
                 /* Go through needle checking against each corresponding
-                value in haystack */
+                value in haystack. If there is a match, store that value
+                as the new needle index and continue checking from 
+                there */
                 if (haystack[tempHaystackIndex] == 
                                               needle[tempNeedleIndex]) {
-                    tempHaystackIndex--;
-                    tempNeedleIndex--;
+                    needleIndex = tempNeedleIndex;
+                        while (tempNeedleIndex != 0) {
+                            if (haystack[tempHaystackIndex] == 
+                                              needle[tempNeedleIndex]) {
+                                tempNeedleIndex--;
+                                tempHaystackIndex--;
                     }
-                /* Check the haystack value against the first value of 
-                the needle */
+                        else 
+                            break;
+                        }
+                                              }
+                /* If no match, lower needle value */
                 else {
-                    needleIndex = 0;
-                    if (needle[needleIndex] == haystack[haystackIndex]) 
-                        needleIndex++;
-                    break;
+                    needleIndex--;
             }
             }
             /* Update haystack index */
@@ -132,4 +138,5 @@ char *Str_search(const char haystack[], const char needle[]) {
 
     
     return NULL;
-}
+
+    }
