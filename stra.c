@@ -92,10 +92,8 @@ char *Str_search(const char haystack[], const char needle[]) {
                 needleIndex++;
                 haystackIndex++;
         }
-        /* If next haystack character matches this character, go back 
-        through haystack and needle to see where they stop matching
-        the second character of needle */
-        else if (haystack[haystackIndex] != needle[needleIndex]) {                       
+        /* Otherwise, go back and see if there is a match */
+        else {                       
             tempNeedleIndex = needleIndex-1;
             tempHaystackIndex = haystackIndex;
             while (tempNeedleIndex != 0) {
@@ -106,29 +104,38 @@ char *Str_search(const char haystack[], const char needle[]) {
                 if (haystack[tempHaystackIndex] == 
                                               needle[tempNeedleIndex]) {
                     needleIndex = tempNeedleIndex;
-                        while (tempNeedleIndex != 0) {
-                            if (haystack[tempHaystackIndex] == 
+                    tempNeedleIndex--;
+                    tempHaystackIndex--;
+                    while (tempNeedleIndex != 0) {
+                        if (haystack[tempHaystackIndex] == 
                                               needle[tempNeedleIndex]) {
-                                tempNeedleIndex--;
-                                tempHaystackIndex--;
+                            tempNeedleIndex--;
+                            tempHaystackIndex--;
                     }
-                        else 
+                        else {
+                            tempHaystackIndex = haystackIndex;
+                            needleIndex = 0;
+                            tempNeedleIndex--;
                             break;
                         }
+                        
+                        }
                                               }
-                /* If no match, lower needle value */
+                /* If no match, lower tempNeedleIndex value */
                 else {
-                    needleIndex--;
+                    tempNeedleIndex--;
+                    needleIndex = 0;
             }
+            }
+            /* If the first characters are also the same, keep the 
+            needleIndex. Otherwise, set needleIndex to 0 */
+            if (haystack[tempHaystackIndex] != needle[tempNeedleIndex]) {
+                needleIndex = 0;
             }
             /* Update haystack index */
             haystackIndex++;
         }
         
-        else {
-            needleIndex = 0;
-            haystackIndex++;
-        }
     }
     
     /* Return the appropriate pointer if needle comes at the very end of
