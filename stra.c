@@ -70,6 +70,8 @@ int Str_compare(const char pc1[], const char pc2[]) {
 char *Str_search(const char haystack[], const char needle[]) {
     size_t haystackIndex;
     size_t needleIndex;
+    size_t tempHaystackIndex;
+    size_t tempNeedleIndex;
     assert(haystack != NULL);
     assert(needle != NULL);
     haystackIndex = 0;
@@ -90,11 +92,24 @@ char *Str_search(const char haystack[], const char needle[]) {
                 needleIndex++;
                 haystackIndex++;
         }
-        /* If haystack character is the first letter of needle, go to 
+        /* If next haystack character matches this character, go back 
+        through haystack and needle to see where they stop matching
         the second character of needle */
-        else if (haystack[haystackIndex] == *needle) {
+        else if (haystack[haystackIndex+1] == needle[needleIndex]) {                       
+            tempNeedleIndex = needleIndex-1;
+            tempHaystackIndex = haystackIndex;
+            while (tempNeedleIndex != 0) {
+                if (haystack[tempHaystackIndex] == 
+                                              needle[tempNeedleIndex]) {
+                    tempHaystackIndex--;
+                    tempNeedleIndex--;
+                    }
+                else {
+                    needleIndex = 0;
+                }
+            }
+            /* Update haystack index */
             haystackIndex++;
-            needleIndex = 1; /* Needle index becomes the second one */
         }
         else {
             needleIndex = 0;
