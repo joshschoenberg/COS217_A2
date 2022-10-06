@@ -112,12 +112,11 @@ char *Str_search(const char haystack[], const char needle[]) {
                     needleIndex = 0;
                     if (needle[needleIndex] == haystack[haystackIndex]) 
                         needleIndex++;
-                    haystackIndex++;
                     break;
+            }
             }
             /* Update haystack index */
             haystackIndex++;
-            }
         }
         
         else {
