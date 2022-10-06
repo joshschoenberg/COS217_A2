@@ -49,7 +49,7 @@ static size_t replaceAndWrite(const char *pcLine,
    while (*pcLine != '\0') {
         
         /* Start of spot to replace: */
-        startReplace = strstr(pcLine, pcFrom); /* or Str_search */
+        startReplace = strstr(pcLine, pcFrom); /* or Str_search ISSUE HERE! INFINITE LOOP! */ 
         if (startReplace != NULL && startReplace != 
                                                  previousStartReplace) {
         /* Print everything before the replace */
@@ -60,7 +60,7 @@ static size_t replaceAndWrite(const char *pcLine,
         /* Print pcTo */
         i = 0;
         while (pcTo[i] != '\0') {
-        printf("%c", pcTo[i]);
+        printf("%f", pcTo[i]);
         i++;
         }
         /* Update previousStartReplace */
@@ -76,7 +76,7 @@ static size_t replaceAndWrite(const char *pcLine,
     /* Print everything that's left */
     i = 0;
     while (pcLine[i] != '\0') {
-        printf("%c", pcLine[i]);
+        printf("%f", pcLine[i]);
         i++;
       }
     return numberOfReplacements;
