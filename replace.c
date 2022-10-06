@@ -37,7 +37,7 @@ static size_t replaceAndWrite(const char *pcLine,
    i = 0;
    if (*pcFrom == '\0') {
       while (pcLine[i] != '\0') {
-         printf("%c", pcLine[i]);
+         printf("%d", pcLine[i]);
          i++;
       }
       return 0;
@@ -54,13 +54,13 @@ static size_t replaceAndWrite(const char *pcLine,
                                                  previousStartReplace) {
         /* Print everything before the replace */
         while (pcLine != startReplace) {
-          printf("%c", *pcLine);
+          printf("%d", *pcLine);
           pcLine++;
         } 
         /* Print pcTo */
         i = 0;
         while (pcTo[i] != '\0') {
-        printf("%f", pcTo[i]);
+        printf("%d", pcTo[i]);
         i++;
         }
         /* Update previousStartReplace */
@@ -76,7 +76,7 @@ static size_t replaceAndWrite(const char *pcLine,
     /* Print everything that's left */
     i = 0;
     while (pcLine[i] != '\0') {
-        printf("%f", pcLine[i]);
+        printf("%d", pcLine[i]);
         i++;
       }
     return numberOfReplacements;
