@@ -1,12 +1,13 @@
 /*--------------------------------------------------------------------*/
 /* replace.c                                                          */
-/* Author: ???                                                        */
+/* Author: Josh Schoenberg                                            */
 /*--------------------------------------------------------------------*/
 
 #include "str.h"
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*--------------------------------------------------------------------*/
 
@@ -19,9 +20,68 @@
 
 static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
-{
+{  
    /* Insert your code here. */
+   size_t i;
+   char *startReplace;
+   char *previousStartReplace;
+   size_t sizeOfFrom;
+   size_t sizeOfTo;
+   size_t numberOfReplacements = 0;
+   
+   assert(pcLine != NULL);
+   assert(pcFrom != NULL);
+   assert(pcTo != NULL);
+
+   /* If pcFrom is the empty string, then write string pcLine to stdout
+   and return 0. */
+   i = 0;
+   if (*pcFrom == '\0') {
+      while (pcLine[i] != '\0') {
+         printf("%c", pcLine[i]);
+         i++;
+      }
+      return 0;
+   }
+   
+   /* Store the size of pcFrom and pcTo */
+   sizeOfFrom = Str_getLength(pcFrom);
+   sizeOfTo = Str_getLength(pcTo);
+
+   while (*pcLine != '\0') {
+        
+        /* Start of spot to replace: */
+        startReplace = strstr(pcLine, pcFrom); /* or Str_search */
+        if (startReplace != NULL && startReplace != 
+                                                 previousStartReplace) {
+        /* Print everything before the replace */
+        while (pcLine != startReplace) {
+          printf("%c", *pcLine);
+          pcLine++;
+        } 
+        /* Print pcTo */
+        i = 0;
+        while (pcTo[i] != '\0') {
+        printf("%c", pcTo[i]);
+        i++;
+        }
+        /* Update previousStartReplace */
+        previousStartReplace = startReplace;
+        /* Move pcLine to the end of the replaced section */
+        pcLine += sizeOfFrom;
+        /* Increment numberOfReplacements */
+        numberOfReplacements++;
+   }
+   }
+    /* Print everything that's left */
+    i = 0;
+    while (pcLine[i] != '\0') {
+        printf("%c", pcLine[i]);
+        i++;
+      }
+    return numberOfReplacements;
 }
+
 
 /*--------------------------------------------------------------------*/
 
@@ -36,7 +96,7 @@ static size_t replaceAndWrite(const char *pcLine,
    Assume that no line of stdin consists of more than MAX_LINE_SIZE-1
    characters. */
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) 
 {
    enum {MAX_LINE_SIZE = 4096};
    enum {PROPER_ARG_COUNT = 3};
@@ -56,8 +116,9 @@ int main(int argc, char *argv[])
    pcTo = argv[2];
 
    while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL)
-      /* Insert your code here. */
-
-   fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
+       /* Insert your code here. */
+       uReplaceCount = replaceAndWrite(argv[0], pcFrom, pcTo);
+    
+    fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    return 0;
 }

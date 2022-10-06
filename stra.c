@@ -91,7 +91,7 @@ char *Str_search(const char haystack[], const char needle[]) {
                 haystackIndex++;
         }
         /* If haystack character is the first letter of needle, go to 
-        the second character of each */
+        the second character of needle */
         else if (haystack[haystackIndex] == *needle) {
             haystackIndex++;
             needleIndex = 1; /* Needle index becomes the second one */
@@ -101,6 +101,8 @@ char *Str_search(const char haystack[], const char needle[]) {
             haystackIndex++;
         }
     }
+    /* Return the appropriate pointer if needle comes at the very end of
+    haystack */
     if (haystack[haystackIndex] == '\0' && needle[needleIndex] == '\0')
         return (char *) (haystack + (haystackIndex - Str_getLength(needle))); 
 
