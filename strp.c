@@ -1,5 +1,9 @@
+/*--------------------------------------------------------------------*/
+/* strp.c                                                             */
+/* Author: Josh Schoenberg                                            */
+/*--------------------------------------------------------------------*/
+
 #include <stdio.h>
-#include <ctype.h>
 #include <stdlib.h>
 #include <assert.h>
 #include "str.h"
@@ -74,7 +78,7 @@ char *Str_search(const char *haystack, const char *needle) {
     return ptr;
 }
 */ 
-char *Str_search(const char haystack[], const char needle[]) {
+char *Str_search(const char *haystack, const char *needle) {
     const char *tempHaystack;
     const char *tempNeedle;
     const char *needleStart = needle;
