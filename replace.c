@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
-#include <string.h>
 
 /*--------------------------------------------------------------------*/
 
@@ -48,7 +47,7 @@ static size_t replaceAndWrite(const char *pcLine,
    while (*pcLine != '\0') {
         
         /* Start of spot to replace: */
-        startReplace = strstr(pcLine, pcFrom); /* or Str_search */
+        startReplace = Str_search(pcLine, pcFrom); /* or Str_search */
         if (startReplace == NULL) {
             break;
         } 
@@ -115,7 +114,7 @@ int main(int argc, char *argv[])
    while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL)
        /* Insert your code here. */
        uReplaceCount += replaceAndWrite(acLine, pcFrom, pcTo);
-       
+
     fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    return 0;
 }
