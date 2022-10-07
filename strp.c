@@ -145,7 +145,7 @@ char *Str_search(const char haystack[], const char needle[]) {
     /* Return the appropriate pointer if needle comes at the very end of
     haystack */
     if (*haystack == '\0' && *needle == '\0')
-        return (char *) (haystack - Str_getLength(needle)); 
+        return (char *) (haystack - Str_getLength(needleStart)); 
 
     
     return NULL;
