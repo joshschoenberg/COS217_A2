@@ -75,9 +75,9 @@ char *Str_search(const char *haystack, const char *needle) {
 }
 */ 
 char *Str_search(const char haystack[], const char needle[]) {
-    char *tempHaystack;
-    char *tempNeedle;
-    char *needleStart = needle;
+    const char *tempHaystack;
+    const char *tempNeedle;
+    const char *needleStart = needle;
     assert(haystack != NULL);
     assert(needle != NULL);
     /* Return the haystack if the needle is empty */ 
