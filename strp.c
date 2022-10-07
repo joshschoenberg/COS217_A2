@@ -113,7 +113,7 @@ char *Str_search(const char haystack[], const char needle[]) {
                     while (tempNeedle != needleStart) {
                         if (*tempHaystack == *tempNeedle) {
                             tempNeedle--;
-                            *tempHaystack--;
+                            tempHaystack--;
                     }
                         else {
                             tempHaystack = haystack;
