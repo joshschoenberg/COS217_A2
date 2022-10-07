@@ -75,37 +75,79 @@ char *Str_search(const char *haystack, const char *needle) {
 }
 */ 
 char *Str_search(const char haystack[], const char needle[]) {
-    size_t haystackIndex;
-    size_t needleIndex;
+    char *tempHaystack;
+    char *tempNeedle;
+    char *needleStart = needle;
     assert(haystack != NULL);
     assert(needle != NULL);
-    haystackIndex = 0;
-    needleIndex = 0;
     /* Return the haystack if the needle is empty */ 
-    if (needle[needleIndex] == '\0')
+    if (*needle == '\0')
         return (char *) haystack;
-    while (haystack[haystackIndex] != '\0') {
+
+    while (*haystack != '\0') {
          /* If needle appears in haystack, return pointer to first 
         character of first occurrence of needle in haystack */
-        if (needle[needleIndex] == '\0') {
-            return (char *) (haystack + haystackIndex - Str_getLength(needle));
+        if (*needle == '\0') {
+            return (char *) haystack - Str_getLength(needle);
         }
         /* If the next character matches, increment the needle and 
-        haystack indices */
-        else if (haystack[haystackIndex] == needle[needleIndex]) {
-                needleIndex++;
-                haystackIndex++;
+        haystack pointers */
+        else if (*haystack == *needle) {
+                needle++;
+                haystack++;
         }
-        /* If haystack character is the first letter of needle, go to 
-        the second character of each */
-        else if (haystack[haystackIndex] == *needle) {
-            haystackIndex++;
-            needleIndex += 1; /* Needle index becomes the second one */
-        }
+        /* Otherwise, go back and see if there is a match */
         else {
-            needleIndex = 0;
-            haystackIndex++;
+            if (needle != needleStart) {                       
+            tempNeedle = needle-1;
+            tempHaystack = haystack;
+            while (tempNeedle != needleStart) {
+                /* Go through needle checking against each corresponding
+                value in haystack. If there is a match, store the next
+                value as the new needle index and continue checking from 
+                there */
+                if (*tempHaystack == *tempNeedle) {
+                    needle = tempNeedle + 1;
+                    tempNeedle--;
+                    tempHaystack--;
+                    while (tempNeedle != needleStart) {
+                        if (*tempHaystack == *tempNeedle) {
+                            tempNeedle--;
+                            *tempHaystack--;
+                    }
+                        else {
+                            tempHaystack = haystack;
+                            needle = needleStart;
+                            tempNeedle--;
+                            break;
+                        }
+                        
+                        }
+                                              }
+                /* If no match, lower tempNeedleIndex value */
+                else {
+                    tempNeedle--;
+                    needle = 0;
+            }
+            }
+            /* If the first characters are also the same, keep the 
+            needleIndex. Otherwise, set needleIndex to 0 */
+            if (*tempHaystack != *tempNeedle) {
+                needle = needleStart;
+            }
+            }
+            /* Update haystack index */
+            haystack++;
         }
+        
     }
+    
+    /* Return the appropriate pointer if needle comes at the very end of
+    haystack */
+    if (*haystack == '\0' && *needle == '\0')
+        return (char *) (haystack - Str_getLength(needle)); 
+
+    
     return NULL;
-}
+
+    }
