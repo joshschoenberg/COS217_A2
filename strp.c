@@ -88,7 +88,7 @@ char *Str_search(const char haystack[], const char needle[]) {
          /* If needle appears in haystack, return pointer to first 
         character of first occurrence of needle in haystack */
         if (*needle == '\0') {
-            return (char *) haystack - Str_getLength(needle);
+            return (char *) haystack - Str_getLength(needleStart);
         }
         /* If the next character matches, increment the needle and 
         haystack pointers */
