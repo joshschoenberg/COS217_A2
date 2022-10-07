@@ -1,3 +1,7 @@
+/*--------------------------------------------------------------------*/
+/* str.h                                                             */
+/* Author: Josh Schoenberg                                            */
+/*--------------------------------------------------------------------*/
 #ifndef STRA_INCLUDED
 #define STRA_INCLUDED
 #include <stddef.h>
@@ -8,7 +12,7 @@ size_t Str_getLength(const char pcSrc[]);
 
 /*--------------------------------------------------------------------*/
 /* Copy a string (pcSrc) into a new string (pcDest), and return a 
-pointer to the new string */
+pointer to the new string (pcDest) */
 
 char *Str_copy(char pcDest[], const char pcSrc[]);
 
@@ -20,8 +24,8 @@ char *Str_concat(char pcDest[], const char pcSrc[]);
 
 /*--------------------------------------------------------------------*/
 /* Compares the two strings pc1 and pc2. It returns an integer less 
-than, equal to, or greater than zero if  s1  is  found, respectively, to 
-be less than, to match, or be greater than s2. */
+than, equal to, or greater than zero if  pc1  is  found, respectively, to 
+be less than, to match, or be greater than pc2. */
 
 int Str_compare(const char pc1[], const char pc2[]);
 
