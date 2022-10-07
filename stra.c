@@ -99,12 +99,12 @@ char *Str_search(const char haystack[], const char needle[]) {
             tempHaystackIndex = haystackIndex;
             while (tempNeedleIndex != 0) {
                 /* Go through needle checking against each corresponding
-                value in haystack. If there is a match, store that value
-                as the new needle index and continue checking from 
+                value in haystack. If there is a match, store the next
+                value as the new needle index and continue checking from 
                 there */
                 if (haystack[tempHaystackIndex] == 
                                               needle[tempNeedleIndex]) {
-                    needleIndex = tempNeedleIndex;
+                    needleIndex = tempNeedleIndex + 1;
                     tempNeedleIndex--;
                     tempHaystackIndex--;
                     while (tempNeedleIndex != 0) {
