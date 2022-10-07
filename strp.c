@@ -124,10 +124,10 @@ char *Str_search(const char haystack[], const char needle[]) {
                         
                         }
                                               }
-                /* If no match, lower tempNeedleIndex value */
+                /* If no match, lower tempNeedle value */
                 else {
                     tempNeedle--;
-                    needle = 0;
+                    needle = needleStart;
             }
             }
             /* If the first characters are also the same, keep the 
